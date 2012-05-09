@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>  
+  <meta charset="utf-8">  
+  <title>{{ item.title }}</title>
+  <meta name="description" content="details page">
+  <meta name="author" content="dungeon">  
+  <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+</head>
+<body>
+<div class="container">
+<div class="navBar">
+    <b><a href="/">||PYRAMIDBUFFET||</a></b>
+    <a href="http://dungeon.pyramidbuffet.org">dungeon chat</a>
+</div>
+<h1>{{ item.title }}</h1>
+{{ item.description }}
+<!--<div class="description">{{ item.description }}</div>-->
+<h3>All Files</h3>
+{% if item.mediatype is movies %}
+movies!
+{% endif %}
+<ul>
+    {% for file in files %}
+    <li><a href="http://archive.org/download/{{ item.identifier }}/{{ file.name }}">{{ file.name }}</a></li>
+    {% endfor %}
+</ul>
+
+</div>
+</body>
+</html>

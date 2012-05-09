@@ -1,0 +1,39 @@
+@charset "UTF-8";
+/* CSS Document */
+/* Thanks to http://ethanschoonover.com/solarized for the colours */
+
+/* body {background-color: #EEFFEE; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;} */
+body {background-color: #EEFFEE; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;}
+
+.navBar { background-color: #FFFF75; padding-top: 10px; padding: 10px; }
+.navBar b { margin-right: 20px; color: #fdf6e3;} 
+
+.container { padding: 10px; margin: 0;}
+
+.subNav { font-size: .875em;}
+.subNav a {margin-right: 10px;}
+.browseNav { font-size: .875em; color: #839496; margin-top: 10px; border-bottom: 1px dotted #839496; padding-bottom: 10px;}
+.browseNav b {color: #073642; }
+
+.footer { border-top: 1px dotted #839496; margin-top: 100px; padding-top: 10px; margin-bottom: 50px; font-size: .625em;}
+.footer img { float: right; padding-left: 50px; margin-top: -10px;}
+
+h1, h2, h3, h4, h5, h6, b { color: #073642;}
+h1.details {font-size: 1em;}
+hr { color: #839496; background-color: #839496; height: 1px;}
+
+small a:link { color: #839496; text-decoration: none; border-bottom: #859900 1px dotted;}
+small a:visited { color: #839496; text-decoration: none; border-bottom: #859900 1px dotted; }
+small a:hover { color: #268bd2; text-decoration: none; border-bottom: #00f 1px dotted; }
+
+a { color: #268bd2;} 
+
+li { line-height: 1.5em; }
+small { color: #839496; }
+h1 small { margin-right: 10px; font-weight: normal; font-size: 0.5em;}
+h2 small { margin-left: 10px; font-weight: normal; font-size: 0.625em;}
+h3 small { margin-left: 10px; font-weight: normal; font-size: 0.75em;}
+
+.media img { max-width: 95%;}
+.description { margin-top: 20px; max-width: 95%}
+.itemMeta { margin-top: 20px; }
