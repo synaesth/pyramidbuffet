@@ -1,16 +1,12 @@
-from flask import render_template
-from pyramidbuffet import app
+from flask import Blueprint, render_template
 import urllib2
 import simplejson as json
 
+mod = Blueprint('details', __name__, url_prefix='/details')
+
 
 #______________________________________________________________________________
-@app.route("/")
-def index():
-    return render_template('index.html')
-
-#______________________________________________________________________________
-@app.route("/details/<identifier>")
+@mod.route("/details/<identifier>")
 def details(identifier):
     item_jstor = jstor(identifier)
     meta_dict = item_jstor['metadata']
