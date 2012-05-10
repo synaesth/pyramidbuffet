@@ -17,9 +17,6 @@
 {{ item.description }}
 <!--<div class="description">{{ item.description }}</div>-->
 <h3>All Files</h3>
-{% if item.mediatype is movies %}
-movies!
-{% endif %}
 <ul>
     {% for file in files %}
     <li><a href="http://archive.org/download/{{ item.identifier }}/{{ file.name }}">{{ file.name }}</a></li>
