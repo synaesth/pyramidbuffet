@@ -1,0 +1,10 @@
+uwsgi:
+  uid: uwsgi
+  home: venv
+  socket: 127.0.0.1:3030
+  module: pyramidbuffet:app
+  master: 1
+  vacuum: 1
+  daemonize: /var/log/uwsgi/pyramidbuffet.org.log
+  pidfile: /tmp/uwsgi.pid
+  uid: 106

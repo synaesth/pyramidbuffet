@@ -1,7 +1,10 @@
 from flask import Flask, session, g, render_template
+from werkzeug.contrib.fixers import ProxyFix
 from flaskext.openid import OpenID
 
+
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 app.config.from_object('websiteconfig')
 
 #from pyramidbuffet.openid_auth import DatabaseOpenIDStore
