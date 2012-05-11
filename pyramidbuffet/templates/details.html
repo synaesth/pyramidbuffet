@@ -34,7 +34,9 @@
 
 {% if item.description %}
 <h3>Description ::</h3>
-<div class="description">{{ item.description }}</div>
+{% block body %}
+{{ item.description|safe }}
+{% endblock %}
 {% endif %}
 
 <h3>Metadata ::</h3>
