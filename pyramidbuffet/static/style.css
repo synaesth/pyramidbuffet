@@ -1,12 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
-/* Thanks to http://ethanschoonover.com/solarized for the colours */
 
-/*body {background-color: #EEFFEE; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;}*/
 body {background-color: #F1FBFD; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;}
 
-.navBar { background-color: #FFFF75; padding-top: 10px; padding: 10px; }
-.navBar b { margin-right: 20px; color: #fdf6e3;} 
+.navBar { background-color: #FFFF75; padding-top: 10px; padding: 5px; }
+.navBar img { vertical-align: bottom; padding-bottom: 2px; }
+.navBar b {margin-left: 20px margin-right: 20px; color: #fdf6e3;} 
 .navbar .brand { float: right; }
 
 .container { padding: 10px; margin: 0;}
@@ -39,3 +38,8 @@ h3 small { margin-left: 10px; font-weight: normal; font-size: 0.75em;}
 .media img { max-width: 95%;}
 .description { margin-top: 20px; max-width: 95%}
 .itemMeta { margin-top: 20px; }
+
+
+/****************
+/* Colors I like: IA Green Tasklog backgroung::[ #EEFFEE ]
+***************/
