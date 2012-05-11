@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>  
+  {% block head %}
+  <meta charset="utf-8">  
+  <title>{% block title %} ~ ||PYRAMID|BUFFET|| {% endblock %}</title>
+  <meta name="author" content="dungeon">  
+  <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+  <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>-->
+  {% endblock %}
+<body>
+<div class="container">
+<div class="navBar">
+  <div style="float: right">
+    <a href="/login">login</a>
+  </div>
+  <b><a href="/">||PYRAMIDBUFFET||</a></b>
+  <!--<a href="http://dungeon.pyramidbuffet.org">dungeon chat</a>-->
+</div>
+{% block container %}
+{% endblock %}
+</div>
+<div class="footer">
+    <b>pyramidbuffet.org</b> is a little prototype explorer for things the dungeon people create. 
+</div>
+</body>

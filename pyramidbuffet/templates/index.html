@@ -1,21 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>  
-  <meta charset="utf-8">  
-  <title>||PYRAMID|BUFFET||</title>
-  <meta name="description" content="details page">
-  <meta name="author" content="dungeon">  
-  <link rel="stylesheet" type="text/css" href="/static/style.css"/>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
-<body>
-<div class="container">
-<div class="navBar">
-  <div style="float: right">
-    <a href="/login">login</a>
-  </div>
-  <b><a href="/">||PYRAMIDBUFFET||</a></b>
-  <!--<a href="http://dungeon.pyramidbuffet.org">dungeon chat</a>-->
-</div>
+{% extends "base.html" %}
+
+{% block container %}
 <h1>Explore the Archive!</h1>
 <h2>Movies:</h2>
 <li><a href="/details/cloudseed">Cloudseed</a></li>
@@ -31,8 +16,4 @@
 <li><a href="/details/AQuestionableAssemblageConcerningAPostnaturalEcologicalInterface">A Questionable Assemblage Concerning a Postnatural Ecological Interface</a></li>
 <li><a href="/details/MacroImbroglioVolumeOneOntology">Macroimbroglio; Ontology</a></li>
 <li><a href="/details/ian-huddleston_easter-program">EASTER</a></li>
-
-</div>
-</body>
-</html>
-                                                                                                                                                                        
+{% endblock %}
