@@ -33,9 +33,14 @@
 {% endif %}
 
 {% if item.description %}
-<h3>Description</h3>
+<h3>Description ::</h3>
 <div class="description">{{ item.description }}</div>
 {% endif %}
+
+<h3>Metadata ::</h3>
+{% for key, value in item.items() if key != 'description' %}
+<li><b>{{ key }} :: </b> {{ value }} </li>      
+{% endfor %}
 
 <h3>All Files</h3>
 
