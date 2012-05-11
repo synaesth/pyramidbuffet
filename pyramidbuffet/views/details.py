@@ -12,9 +12,10 @@ env = Environment()
 @mod.route("/<identifier>")
 def details(identifier):
     item_jstor = jstor(identifier)
-    meta_dict = item_dict(item_jstor['metadata'])
     return render_template('details.html', files=item_jstor['files'],
-                                           item=meta_dict)
+                                           item=item_dict(item_jstor['metadata']),
+                                           stream_url=stream_media(item_jstor))
+
 # Item JSON store.
 #______________________________________________________________________________
 def jstor(identifier):
@@ -29,6 +30,17 @@ def item_dict(item_jstor):
                 'licenseurl', 'rights', 'contributor', 'publisher', 'credits',
                 'language']
     return {k: v for k,v in item_jstor.iteritems() if k in pyr_meta}
+
+# EMBED URL
+#______________________________________________________________________________
+def stream_media(item_jstor):
+    stream_files = item_jstor['files']
+    metadata = item_jstor['metadata']
+    for f in stream_files:
+        if metadata['mediatype'] == 'audio':
+            if 'ogg' in f['format'].lower():
+                return ("http://archive.org/download/%s/%s" %
+                        (metadata['identifier'], f['name']))
 
 # TESTING... 1 2 || 3 |4
 #______________________________________________________________________________

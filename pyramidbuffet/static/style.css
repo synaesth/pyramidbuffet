@@ -2,7 +2,8 @@
 /* CSS Document */
 /* Thanks to http://ethanschoonover.com/solarized for the colours */
 
-body {background-color: #EEFFEE; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;}
+/*body {background-color: #EEFFEE; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;}*/
+body {background-color: #F1FBFD; font-family: Helvetica, Arial, sans-serif; color: #586e75; margin: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; font-size: 1em;}
 
 .navBar { background-color: #FFFF75; padding-top: 10px; padding: 10px; }
 .navBar b { margin-right: 20px; color: #fdf6e3;} 
