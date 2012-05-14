@@ -1,12 +1,9 @@
 from flask import Blueprint, render_template, g, request
 from pyramidbuffet import oid
 from mongokit import Connection
-from pyramidbuffet import database
+from pyramidbuffet.database import connection
 
 mod = Blueprint('general', __name__)
-connection = Connection()
-connection.register(database.Item)
-item = connection.Item()
 
 
 # PYRAMID BUFFET HOME PAGE
