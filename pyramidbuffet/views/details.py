@@ -7,12 +7,10 @@ import simplejson as json
 mod = Blueprint('details', __name__, url_prefix='/details')
 collection = connection['archive'].items
 
-
 #______________________________________________________________________________
 @mod.route("/<identifier>")
 def details(identifier):
     item_jstor = jstor(identifier)
-    #pyr_item = connection.Item.find_one({'identifier': identifier})
     pyr_item = collection.Item.find_one({'identifier': identifier})
     if pyr_item:
         file_list = pyr_item['files']

@@ -1,12 +1,10 @@
 from flask import Flask
 from mongokit import Connection, Document
-from pyramidbuffet import app
 import datetime
 
-#app = Flask(__name__)
-#app.config.from_object(__name__)
-connection = Connection(app.config['MONGODB_HOST'],
-                        app.config['MONGODB_PORT'])
+MONGODB_HOST = 'localhost'
+MONGODB_PORT = 27017
+connection = Connection(MONGODB_HOST, MONGODB_PORT)
 
 class Item(Document):
     __collection__ = 'items'
