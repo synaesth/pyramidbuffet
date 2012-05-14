@@ -1,20 +1,28 @@
 from flask import Blueprint, render_template
-from jinja2 import Environment, FileSystemLoader
+from mongokit import Connection
+from pyramidbuffet import database
+from datetime import datetime
 
 import urllib2
 import simplejson as json
 
 mod = Blueprint('details', __name__, url_prefix='/details')
-env = Environment()
+connection = Connection()
+connection.register(database.Item)
+item = connection.Item()
 
 
 #______________________________________________________________________________
 @mod.route("/<identifier>")
 def details(identifier):
     item_jstor = jstor(identifier)
-    return render_template('details.html', files=item_jstor['files'],
-                                           item=item_dict(item_jstor['metadata']),
-                                           stream_url=stream_media(item_jstor))
+    pyr_item = connection.Item.find_one({'identifier': identifier})
+    if pyr_item:
+        file_list = pyr_item['files']
+        meta_dict = {k: v for k,v in item_dict(pyr_item).iteritems() if v != None}
+        return render_template('details.html', files=file_list,
+                                               metadata=meta_dict)
+    return render_template('404.html'), 404
 
 # Item JSON store.
 #______________________________________________________________________________
@@ -31,16 +39,28 @@ def item_dict(item_jstor):
                 'language']
     return {k: v for k,v in item_jstor.iteritems() if k in pyr_meta}
 
-# EMBED URL
-#______________________________________________________________________________
-def stream_media(item_jstor):
-    stream_files = item_jstor['files']
-    metadata = item_jstor['metadata']
-    for f in stream_files:
-        if metadata['mediatype'] == 'audio':
-            if 'ogg' in f['format'].lower():
-                return ("http://archive.org/download/%s/%s" %
-                        (metadata['identifier'], f['name']))
+## CREATE ITEM.
+##______________________________________________________________________________
+def create_item(json_str):
+    if not json_str:
+        return None
+    metadata = json_str['metadata']
+    identifier = metadata['identifier']
+    pyr_metadata = item_dict(metadata)
+    pyr_metadata['files'] = json_str['files']
+    item_exists = connection.Item.find_one({'identifier': identifier})
+    if item_exists:
+        return None
+    for k,v in pyr_metadata.iteritems():
+        if k == 'date':
+            item[k] = datetime.strptime(v, '%Y-%m-%d')
+        elif k == 'files':
+            item[k] = v
+        elif k == 'subject':
+            item[k] = v.split(';')
+        else:
+            item[k] = unicode(v)
+    item.save()
 
 # TESTING... 1 2 || 3 |4
 #______________________________________________________________________________
@@ -52,7 +72,3 @@ def is_audio(mediatype):
 
 def is_texts(mediatype):
     if mediatype == 'texts': return True
-
-env.tests['movies'] = is_movie
-env.tests['audio'] = is_audio
-env.tests['texts'] = is_texts
