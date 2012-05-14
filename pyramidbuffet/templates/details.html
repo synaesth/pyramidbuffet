@@ -7,7 +7,8 @@
 <h1>{{ metadata.title }}</h1>
 
 
-{# Media Presentation #}
+{# Media Presentation _____________________________________________________
+___________________________________________________________________________#}
 {% if metadata.mediatype == 'movies' %}
 <div class="movies">
   <iframe src="http://archive.org/embed/{{ metadata.identifier }}" width="640" height="580" frameborder="0"></iframe>
@@ -27,7 +28,8 @@
 {% endif %}
 
 
-{# Description #}
+{# Description ____________________________________________________________
+___________________________________________________________________________#} 
 {% if metadata.description %}
 <h3>Description ::</h3>
 {% block body %}
@@ -37,15 +39,22 @@
 
 <h3>Metadata ::</h3>
 {% for key, value in metadata.items() if key != 'description' %}
+
+{# Subject #}
 {% if key == 'subject' %}
-<li><b>{{ key|capitalize }} :: </b>{{ metadata.subject|join(', ') }} </li>      
+<li><b>{{ key|capitalize }} ::
+{% for sub in metadata.subject %}
+</b><a href="/tag/{{ sub }}">{{ sub }}</a>
+{% endfor %}</li>
+
 {% else %}
-<li><b>{{ key|capitalize }} :: </b> {{ value }} </li>      
+<li><b>{{ key|capitalize }} :: </b>{{ value }}    </li>      
 {% endif %}
+
 {% endfor %}
 
-
-{# File Listing #}
+{# File Listing ___________________________________________________________
+___________________________________________________________________________#}
 <h3>All Files ::</h3>
 
 <ul>
