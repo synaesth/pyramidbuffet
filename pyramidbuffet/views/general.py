@@ -1,14 +1,20 @@
 from flask import Blueprint, render_template, g, request
 from pyramidbuffet import oid
+from mongokit import Connection
+from pyramidbuffet import database
 
 mod = Blueprint('general', __name__)
+connection = Connection()
+connection.register(database.Item)
+item = connection.Item()
 
 
 # PYRAMID BUFFET HOME PAGE
 #______________________________________________________________________________
 @mod.route("/")
 def index():
-    return render_template('index.html')
+    pyr_items = [ x for x in connection.Item.find() ]
+    return render_template('index.html', pyr_items=pyr_items)
 
 # <<__ LOGIN __>>> LOG OUT <<
 #______________________________________________________________________________
